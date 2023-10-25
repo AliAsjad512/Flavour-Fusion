@@ -1,0 +1,142 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review Page</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <style>
+      /* Custom styles go here */
+      .review-card {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 15px;
+      }
+      .rating {
+        color: #ffbf00;
+      }
+
+      .new {
+        width: 370px;
+      }
+      #reviews-container {
+        display: flex;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Customer Reviews</h1>
+      <div class="row" id="reviews-container"></div>
+      <div class="row">
+        <div class="col-md-5">
+          <div class="review-card">
+            <h2>Your Review</h2>
+            <input
+              id="user-name"
+              class="form-control"
+              type="text"
+              placeholder="Your Name"
+            />
+            <div class="rating" id="user-rating">
+              Rating:
+              <i class="fas fa-star" data-rating="1"></i>
+              <i class="fas fa-star" data-rating="2"></i>
+              <i class="fas fa-star" data-rating="3"></i>
+              <i class="fas fa-star" data-rating="4"></i>
+              <i class="fas fa-star" data-rating="5"></i>
+            </div>
+            <textarea
+              id="user-review"
+              class="form-control"
+              rows="4"
+              placeholder="Write your review"
+            ></textarea>
+            <button id="add-review" class="btn btn-primary">Add Review</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        const reviews = [
+          {
+            name: 'John Doe',
+            rating: 5,
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          },
+          {
+            name: 'Jane Smith',
+            rating: 4,
+            text: 'Nullam a velit sed turpis bibendum eleifend.',
+          },
+          {
+            name: 'Bob Johnson',
+            rating: 3,
+            text: 'Phasellus eget libero odio.',
+          },
+        ]
+
+        function displayReviews() {
+          const container = document.getElementById('reviews-container')
+          container.innerHTML = ''
+
+          reviews.forEach((review, index) => {
+            const reviewCard = document.createElement('div')
+            reviewCard.classList.add('new', 'review-card')
+            reviewCard.innerHTML = `
+                        <h2>${review.name}</h2>
+                        <p class="rating">
+                            Rating:
+                            ${Array(review.rating)
+                              .fill(
+                                '<i class="fas fa-star" style="color: #ffbf00;"></i>',
+                              )
+                              .join('')}
+                        </p>
+                        <p>${review.text}</p>
+                        <button class="btn btn-warning edit-review" data-index="${index}">Edit</button>
+                        <button class="btn btn-danger delete-review" data-index="${index}">Delete</button>
+                    `
+            container.appendChild(reviewCard)
+          })
+        }
+
+        displayReviews()
+
+        $('#add-review').click(function () {
+          const name = $('#user-name').val()
+          const rating = parseInt($('#user-rating i.fas.fa-star').length)
+          const text = $('#user-review').val()
+          if (name && text) {
+            reviews.push({ name, rating, text })
+            displayReviews()
+            $('#user-name').val('')
+            $('#user-rating i').removeClass('fas').addClass('far')
+            $('#user-review').val('')
+          }
+        })
+
+        $('#user-rating i').click(function () {
+          const rating = $(this).data('rating')
+          $('#user-rating i').removeClass('fas').addClass('far')
+          $('#user-rating i:lt(' + rating + ')')
+            .addClass('fas')
+            .css('color', '#ffbf00')
+        })
+      })
+    </script>
+  </body>
+</html> -->
